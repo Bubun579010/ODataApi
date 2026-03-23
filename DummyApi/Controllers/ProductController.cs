@@ -21,7 +21,7 @@ namespace DummyApi.Controllers
             return Ok(_service.GetAllQueryable());
         }
 
-        [HttpGet("odata/Products({id})")]
+        [HttpGet("Products({id})")]
         [EnableQuery]
         public async Task<IActionResult> GetProduct(int id)
         {
@@ -29,25 +29,25 @@ namespace DummyApi.Controllers
             return Ok(result);
         }
 
-        [HttpPost("odata/Products")]
+        [HttpPost("Product")]
         public async Task<IActionResult> AddProduct([FromBody] ProductRequest request)
         {
             return Ok(await _service.CreateAsync(request));
         }
 
-        [HttpPut("odata/Products")]
+        [HttpPut("Product")]
         public async Task<IActionResult> UpdateProduct([FromBody] ProductRequest request)
         {
             return Ok(await _service.UpdateAsync(request));
         }
 
-        [HttpDelete("odata/Products({id})")]
+        [HttpDelete("Product({id})")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             return Ok(await _service.DeleteAsync(id));
         }
 
-        [HttpDelete("odata/Products/Soft-delete({id})")]
+        [HttpDelete("Product/Soft-delete({id})")]
         public async Task<IActionResult> SoftDeleteAsync(int id)
         {
             return Ok(await _service.SoftDeleteAsync(id));
